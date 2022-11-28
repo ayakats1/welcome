@@ -11,6 +11,75 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand"><%= link_to root_path do %><i class="fa-solid fa-utensils"></i><% end %></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <% if shop_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li>
+                    <%= link_to "マイページ", shops_my_page_path, class: "btn btn-light" %>
+                  </li>
+                  <li>
+                    <%= link_to "投稿一覧", posts_path, class: "btn btn-light ml-3" %>
+                  </li>
+                  <li>
+                  <%= link_to "ログアウト", destroy_shop_session_path, method: :delete, class: "btn btn-light ml-3" %>
+                  </li>
+                </ul>
+              <% elsif user_signed_in? %>
+                <ul class="navbar-nav ml-auto">
+                  <li>
+                    <%= link_to "マイページ", users_my_page_path, class: "btn btn-light" %>
+                  </li>
+                  <li>
+                    <%= link_to "広告一覧", posts_path, class: "btn btn-light ml-3" %>
+                  </li>
+                  <li>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light ml-3" %>
+                  </li>
+                </ul>
+              <% else %>
+                <ul class="navbar-nav ml-auto">
+                  <li>
+                    <%= link_to "About", about_path, class: "btn btn-secondary" %>
+                  </li>
+                  <li>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary ml-3 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        新規登録
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><%= link_to "お客様", new_user_registration_path %></li>
+                        <li><%= link_to "店舗様", new_shop_registration_path %></li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="dropdown">
+                      <button class="btn btn-secondary ml-3 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        ログイン
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><%= link_to "お客様", new_user_session_path %></li>
+                        <li><%= link_to "店舗様", new_shop_session_path %></li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+        </div>
+      </nav>
+    </header>
+      <main>
+        <%= yield %>
+      </main>
+    <footer>
+    </footer>
   </body>
 </html>

@@ -1,56 +1,56 @@
-<h2>マイページ</h2>
+<h2>Shopマイページ</h2>
 
   <table class="table-borderless">
     <tr>
       <th>登録情報</th>
       <td>
-        <%= link_to customers_edit_information_path, class: "btn btn-success" do %>編集する
+        <%= link_to shops_edit_information_path, class: "btn btn-success" do %>編集する
         <% end %>
       </td>
     </tr>
   </table>
-  
+
   <table class="table table-bordered">
     <tr>
       <th class="table-active" width="30%">氏名</th>
       <td width="70%">
-        <%= @customer.last_name %>
-        <%= @customer.first_name %>
+        <%= @shop.last_name %>
+        <%= @shop.first_name %>
       </td>
     </tr>
     <tr>
       <th class="table-active">カナ</th>
       <td>
-        <%= @customer.last_name_kana %>
-        <%= @customer.first_name_kana %>
+        <%= @shop.last_name_kana %>
+        <%= @shop.first_name_kana %>
       </td>
     </tr>
     <tr>
       <th class="table-active">Shop名</th>
       <td>
-        <%= @customer.shop_name %>
+        <%= @shop.shop_name %>
       </td>
     </tr>
     <tr>
       <th class="table-active">カナ</th>
       <td>
-        <%= @customer.shop_name_kana %>
+        <%= @shop.shop_name_kana %>
       </td>
     </tr>
     <tr>
       <th class="table-active">郵便番号</th>
-      <td><%= @customer.postal_code %></td>
+      <td><%= @shop.postal_code %></td>
     </tr>
     <tr>
       <th class="table-active">住所</th>
-      <td><%= @customer.address %></td>
+      <td><%= @shop.address %></td>
     </tr>
     <tr>
       <th class="table-active">電話番号</th>
-      <td><%= @customer.telephone_number %></td>
+      <td><%= @shop.telephone_number %></td>
     </tr>
     <tr>
       <th class="table-active">メールアドレス</th>
-      <td><%= @customer.email %></td>
+      <td><%= @shop.email %></td>
     </tr>
   </table>
