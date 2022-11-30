@@ -1,0 +1,28 @@
+  <h2>投稿編集</h2>
+  <%= form_with model: @information, url: information_path(@information.id), method: :patch do |f| %>
+    <table class="table table-borderless">
+      <tr>
+        <th>画像</th>
+        <th><%= f.file_field :image %></th>
+      </tr>
+      <tr>
+        <th>期間</th>
+        <th>
+          <%= f.date_field :created_at_gteq %>
+          <span>~</span>
+          <%= f.date_field :created_at_lteq_end_of_day %>
+        </th>
+      </tr>
+      <tr>
+        <th>タイトル</th>
+        <th><%= f.text_field :title %></th>
+      </tr>
+      <tr>
+        <th>内容</th>
+        <th><%= f.text_area :body %></th>
+      </tr>
+      <tr>
+        <th><%= f.submit '変更を保存', class: "btn btn-success" %></th>
+      </tr>
+    </table>
+  <% end %>

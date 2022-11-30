@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'shops/my_page' => 'shops#show'
     get 'shops/unsubscribe' => 'shops#unsubscribe'
     patch 'shops/unsubscribe' => 'shops#withdraw'
-    resources :posts
+    resources :informations
   end
 
   devise_for :users, skip: [:passwords], controllers: {

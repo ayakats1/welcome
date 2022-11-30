@@ -25,7 +25,7 @@
                     <%= link_to "マイページ", shops_my_page_path, class: "btn btn-light" %>
                   </li>
                   <li>
-                    <%= link_to "投稿一覧", posts_path, class: "btn btn-light ml-3" %>
+                    <%= link_to "投稿一覧", informations_path, class: "btn btn-light ml-3" %>
                   </li>
                   <li>
                   <%= link_to "ログアウト", destroy_shop_session_path, method: :delete, class: "btn btn-light ml-3" %>
@@ -49,25 +49,25 @@
                     <%= link_to "About", about_path, class: "btn btn-secondary" %>
                   </li>
                   <li>
-                    <div class="dropdown">
-                      <button class="btn btn-secondary ml-3 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        新規登録
-                      </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><%= link_to "お客様", new_user_registration_path %></li>
-                        <li><%= link_to "店舗様", new_shop_registration_path %></li>
-                      </ul>
+                  <div class="dropdown">
+                    <button class="btn btn-secondary ml-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      新規登録
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <p class="dropdown-item" href="#"><%= link_to "お客様", new_user_registration_path %></p>
+                      <p class="dropdown-item" href="#"><%= link_to "店舗様", new_shop_registration_path %></p>
                     </div>
+                  </div>
                   </li>
                   <li>
                     <div class="dropdown">
-                      <button class="btn btn-secondary ml-3 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <button class="btn btn-secondary ml-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ログイン
                       </button>
-                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><%= link_to "お客様", new_user_session_path %></li>
-                        <li><%= link_to "店舗様", new_shop_session_path %></li>
-                      </ul>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <p class="dropdown-item" href="#"><%= link_to "お客様", new_user_session_path %></p>
+                        <p class="dropdown-item" href="#"><%= link_to "店舗様", new_shop_session_path %></p>
+                      </div>
                     </div>
                   </li>
                 </ul>
