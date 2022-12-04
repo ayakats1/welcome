@@ -1,0 +1,30 @@
+<h2>投稿詳細</h2>
+  <table class='table table-borderless'>
+    <tr>
+      <th>
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image, size: "300x300" %>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th width="30%">タイトル</th>
+      <th width="70%"><%= @post.title %></th>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <th><%= @post.body %></th>
+    </tr>
+    <tr>
+      <th>開始日</th>
+      <% weeks = ["月","火","水","木","金","土","日"] %>
+      <% index = @post.created_at_gteq.strftime("%u").to_i %>
+      <% index2 = @post.created_at_lteq_end_of_day.strftime("%u").to_i %>
+      <th><%= @post.created_at_gteq.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日") %>
+          ~<%= @post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 #{weeks[index2 - 1]}曜日") %></th>
+    </tr>
+  </table>
+
+  <%= link_to edit_post_path, class: "btn btn-success" do %>編集する
+  <% end %>
+  <%= link_to "削除", post_path(@post.id), class: "btn btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
