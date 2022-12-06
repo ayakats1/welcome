@@ -9,12 +9,11 @@ Rails.application.routes.draw do
   }
 
   namespace :shop do
-    resources :shops, except: [:index] # お店の情報を更新する(index以外使う)
+    resource :shop, only: %i(show edit update) do # お店の情報を更新する(index以外使う)
+      get :unsubscribe
+      patch :withdraw
+    end
     resources :posts # お店から広告を投稿や管理する。
-
-    # 退会
-    get 'shops/unsubscribe' => 'shops#unsubscribe'
-    patch 'shops/unsubscribe' => 'shops#withdraw'
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -23,15 +22,15 @@ Rails.application.routes.draw do
   }
 
   scope module: :user do
-    resources :shops, only: [:index, :show] do # お店の詳細や一覧を見る関連
-      resources :posts, only: [:index, :show] do # お店の投稿された広告などを表示する関連
-        resources :comments, only: [:new, :create, :destroy] # コメントをしたり、レビューをしたりする関連
-      end
+    resources :shops, only: [:index, :show]# お店の詳細や一覧を見る関連
+    resources :posts, only: [:index, :show] do # お店の投稿された広告などを表示する関連
+      resources :reviews, only: [:new, :create, :destroy] # コメントをしたり、レビューをしたりする関連
     end
 
     # マイページ (お気に入り投稿が見ることができて自分の情報を編集することもできる)
-    get '/my_page' => 'users#show'
-    patch '/my_page' => 'users#update'
+    get 'users/edit/post' => 'users#edit'
+    patch 'users/my_page' => 'users#update'
+    get 'users/my_page' => 'users#show'
 
     # 退会
     get '/unsubscribe' => 'users#unsubscribe'
@@ -54,7 +53,7 @@ Rails.application.routes.draw do
   #   get 'users/unsubscribe' => 'users#unsubscribe'
   #   patch 'users/unsubscribe' => 'users#withdraw'
   #   resources :comments
-  # end
+  # # end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

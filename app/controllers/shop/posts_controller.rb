@@ -15,7 +15,7 @@ class Shop::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.shop_id = current_shop.id
     @post.save
-    redirect_to post_path(@post.id)
+    redirect_to shop_posts_path
   end
 
   def edit
@@ -25,13 +25,13 @@ class Shop::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to post_path(@post.id)
+    redirect_to shop_post_path(@post.id)
   end
 
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to shop_posts_path
   end
 
   private

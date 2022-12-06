@@ -25,6 +25,6 @@
     </tr>
   </table>
 
-  <%= link_to edit_post_path, class: "btn btn-success" do %>編集する
+  <%= link_to edit_shop_post_path, class: "btn btn-success" do %>編集する
   <% end %>
-  <%= link_to "削除", post_path(@post.id), class: "btn btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+  <%= link_to "削除", shop_post_path(@post.id), class: "btn btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>

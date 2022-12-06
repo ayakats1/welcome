@@ -1,5 +1,5 @@
 <h2>店舗会員情報編集</h2>
-  <%= form_with model: @shop, url: shops_my_page_path, method: :patch do |f| %>
+  <%= form_with model: @shop, url: shop_shop_path, method: :patch do |f| %>
     <table class="table table-borderless">
       <tr>
         <th><%= f.label :氏名 %></th>
@@ -45,6 +45,5 @@
       </tr>
     </table>
     <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-    <%= link_to shops_unsubscribe_path, class: "btn btn-danger" do %>退会する
-    <% end %>
+    <%= link_to "退会する", unsubscribe_shop_shop_path, class: "btn btn-danger" %>
   <% end %>

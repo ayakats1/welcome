@@ -1,2 +1,31 @@
-<h1>User::Posts#index</h1>
-<p>Find me in app/views/user/posts/index.html.erb</p>
+<h2>投稿一覧</h2>
+
+    <% @posts.each do |post| %>
+      <%= link_to post_path(post.id) do %>
+      <table class='table table-borderless'>
+        <tr>
+          <th>有効日</th>
+          <% weeks = ["月","火","水","木","金","土","日"] %>
+          <% index = post.created_at_gteq.strftime("%u").to_i %>
+          <% index2 = post.created_at_lteq_end_of_day.strftime("%u").to_i %>
+          <th><%= post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %>
+              ~<%= post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %></th>
+        </tr>
+        <tr>
+          <th>
+            <% if post.image.attached? %>
+              <%= image_tag post.image, size: "300x300" %>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th width="30%">タイトル</th>
+          <th width="70%"><%= post.title %></th>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <th><%= post.body %></th>
+        </tr>
+      </table>
+      <% end %>
+    <% end %>

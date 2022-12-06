@@ -4,7 +4,7 @@
     <tr>
       <th>登録情報</th>
       <td>
-        <%= link_to users_edit_post_path, class: "btn btn-success" do %>編集する
+        <%= link_to users_edit_post_path(current_user), class: "btn btn-success" do %>編集する
         <% end %>
       </td>
     </tr>

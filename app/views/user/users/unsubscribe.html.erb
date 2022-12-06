@@ -6,5 +6,5 @@
 
     <%= link_to users_my_page_path, class: "btn btn-primary" do %>退会しない
     <% end %>
-    <%= link_to users_unsubscribe_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" do %>退会する
+    <%= link_to unsubscribe_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" do %>退会する
     <% end %>

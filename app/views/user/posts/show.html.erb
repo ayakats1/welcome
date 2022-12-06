@@ -1,2 +1,64 @@
-<h1>User::Posts#show</h1>
-<p>Find me in app/views/user/posts/show.html.erb</p>
+
+<h2>詳細</h2>
+  <table class='table table-borderless'>
+    <tr>
+      <th>有効日</th>
+      <% weeks = ["月","火","水","木","金","土","日"] %>
+      <% index = @post.created_at_gteq.strftime("%u").to_i %>
+      <% index2 = @post.created_at_lteq_end_of_day.strftime("%u").to_i %>
+      <th><%= @post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %>
+          ~<%= @post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %></th>
+    </tr>
+    <tr>
+      <th>
+        <% if @post.image.attached? %>
+          <%= image_tag @post.image, size: "300x300" %>
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th width="30%">タイトル</th>
+      <th width="70%"><%= @post.title %></th>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <th><%= @post.body %></th>
+    </tr>
+    <tr>
+      <th>
+        <%= link_to new_post_review_path(@post), class: "btn btn-success" do %>
+        レビューを書く
+        <% end %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <% @reviews.each do |review| %>
+          <div id="star<%= review.id %>">
+          <script>
+            var elm = document.getElementById("star<%= review.id %>");
+            var opt = {
+              size      : 36,
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              score: <%= review.star %>,
+              half      : false,
+              readOnly: true,
+            };
+            raty(elm, opt);
+          </script>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= review.review %>
+      </th>
+    </tr>
+    <tr>
+      <th>
+        <%= link_to "削除する", post_review_path(@post), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+        <% end %>
+      </th>
+    </tr>
+  </table>
+

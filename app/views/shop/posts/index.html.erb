@@ -1,8 +1,8 @@
 <h2>投稿一覧</h2>
-  <h1><%= link_to new_post_path do %><i class="fa-solid fa-circle-plus"></i><% end %></h1>
+  <h1><%= link_to new_shop_post_path do %><i class="fa-solid fa-circle-plus"></i><% end %></h1>
 
     <% @posts.each do |post| %>
-      <%= link_to post_path(post.id) do %>
+      <%= link_to shop_post_path(post.id) do %>
       <table class='table table-borderless'>
         <tr>
           <th>

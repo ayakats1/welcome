@@ -22,10 +22,10 @@
               <% if shop_signed_in? %>
                 <ul class="navbar-nav ml-auto">
                   <li>
-                    <%= link_to "マイページ", shops_my_page_path, class: "btn btn-light" %>
+                    <%= link_to "マイページ", shop_shop_path, class: "btn btn-light" %>
                   </li>
                   <li>
-                    <%= link_to "投稿一覧", posts_path, class: "btn btn-light ml-3" %>
+                    <%= link_to "投稿一覧", shop_posts_path, class: "btn btn-light ml-3" %>
                   </li>
                   <li>
                   <%= link_to "ログアウト", destroy_shop_session_path, method: :delete, class: "btn btn-light ml-3" %>
