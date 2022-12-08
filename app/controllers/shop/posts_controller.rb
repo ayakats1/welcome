@@ -6,6 +6,7 @@ class Shop::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @maps = Map.all
+    @reviews = Review.all
   end
 
   def new
