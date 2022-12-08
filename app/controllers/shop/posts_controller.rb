@@ -5,6 +5,7 @@ class Shop::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @maps = Map.all
   end
 
   def new
@@ -38,5 +39,9 @@ class Shop::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:shop_id, :title, :body, :image, :created_at_gteq, :created_at_lteq_end_of_day)
+  end
+
+  def map_params
+  params.require(:map).permit(:address, :latitude, :longitude)
   end
 end
