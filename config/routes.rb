@@ -14,7 +14,6 @@ Rails.application.routes.draw do
       patch :withdraw
     end
     resources :posts # お店から広告を投稿や管理する。
-    resources :maps 
   end
 
   devise_for :users, skip: [:passwords], controllers: {
@@ -27,7 +26,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show] do # お店の投稿された広告などを表示する関連
       resources :reviews, only: [:new, :create, :destroy] # コメントをしたり、レビューをしたりする関連
     end
-    resources :maps 
 
     # マイページ (お気に入り投稿が見ることができて自分の情報を編集することもできる)
     get 'users/edit/post' => 'users#edit'

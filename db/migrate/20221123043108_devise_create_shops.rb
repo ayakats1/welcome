@@ -11,6 +11,8 @@ class DeviseCreateShops < ActiveRecord::Migration[6.1]
       t.string :shop_name_kana, null: false
       t.string :postal_code, null: false
       t.string :address, null: false
+      t.float :latitude
+      t.float :longitude
       t.string :telephone_number, null: false
       t.boolean :is_deleted, null: false, default: false
       ## Database authenticatable

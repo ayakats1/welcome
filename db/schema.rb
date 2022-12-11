@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_07_050956) do
+ActiveRecord::Schema.define(version: 2022_12_05_071239) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,20 +40,15 @@ ActiveRecord::Schema.define(version: 2022_12_07_050956) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "shop_id", null: false
     t.date "created_at_gteq", null: false
     t.date "created_at_lteq_end_of_day", null: false
     t.string "title", null: false
     t.string "body", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,6 +71,8 @@ ActiveRecord::Schema.define(version: 2022_12_07_050956) do
     t.string "shop_name_kana", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.string "telephone_number", null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "email", default: "", null: false

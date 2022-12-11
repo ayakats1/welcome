@@ -11,6 +11,7 @@ class Shop::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @maps = Map.all
   end
 
   def create
@@ -39,10 +40,6 @@ class Shop::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:shop_id, :title, :body, :image, :created_at_gteq, :created_at_lteq_end_of_day)
-  end
-
-  def map_params
-  params.require(:map).permit(:address, :latitude, :longitude)
+    params.require(:post).permit(:shop_id, :title, :body, :image, :created_at_gteq, :created_at_lteq_end_of_day, :address, :latitude, :longitude)
   end
 end

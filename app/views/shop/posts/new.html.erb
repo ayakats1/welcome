@@ -24,7 +24,11 @@
             <th><%= f.text_area :body %></th>
           </tr>
           <tr>
-            <th><%= f.submit '新規登録', class: "btn btn-success" %></th>
+            <th>住所</th>
+            <th><%= f.text_field :address %></th>
+          </tr>
+          <tr>
+            <th><%= f.submit '新規投稿', class: "btn btn-success" %></th>
           </tr>
         </table>
       <% end %>
