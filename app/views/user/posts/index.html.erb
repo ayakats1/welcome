@@ -20,10 +20,10 @@
                 <%= image_tag "no_image.jpg", size: "200x200" %>
               <% end %>
             </p>
-            <p class="caption">
               <% weeks = ["月","火","水","木","金","土","日"] %>
               <% index = post.created_at_gteq.strftime("%u").to_i %>
               <% index2 = post.created_at_lteq_end_of_day.strftime("%u").to_i %>
+            <p class="caption">
               <%= post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %><br>
               ~<%= post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %>
             </p>
