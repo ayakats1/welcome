@@ -1,32 +1,38 @@
-<h2>投稿一覧</h2>
-  <h1><%= link_to new_shop_post_path do %><i class="fa-solid fa-circle-plus"></i><% end %></h1>
+<div class="cover-index">
+  <div class="container">
+    <div class="row justify-content-center md-2">
+      <h2 class="font-weight-normal mt-3">投稿一覧</h2>
+    </div>
 
-    <% @posts.each do |post| %>
-      <%= link_to shop_post_path(post.id) do %>
-      <table class='table table-borderless'>
-        <tr>
-          <th>
-            <% if post.image.attached? %>
-              <%= image_tag post.image, size: "300x300" %>
-            <% end %>
-          </th>
-        </tr>
-        <tr>
-          <th width="30%">タイトル</th>
-          <th width="70%"><%= post.title %></th>
-        </tr>
-        <tr>
-          <th>内容</th>
-          <th><%= post.body %></th>
-        </tr>
-        <tr>
-          <th>開始日</th>
-          <% weeks = ["月","火","水","木","金","土","日"] %>
-          <% index = post.created_at_gteq.strftime("%u").to_i %>
-          <% index2 = post.created_at_lteq_end_of_day.strftime("%u").to_i %>
-          <th><%= post.created_at_gteq.strftime("%Y年%-m月%-d日 #{weeks[index - 1]}曜日") %>
-              ~<%= post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 #{weeks[index2 - 1]}曜日") %></th>
-        </tr>
-      </table>
-      <% end %>
-    <% end %>
+      <h1 class="text-right"><%= link_to new_shop_post_path do %><i class="fa-solid fa-circle-plus"></i><% end %></h1>
+
+        <div class="row justify-content-center">
+        <% @posts.each do |post| %>
+            <div class="col-3 shadow float text-center align-self-center ml-4 mb-4">
+              <%= link_to shop_post_path(post.id) do %>
+              <h4 class="caption">
+                <%= post.shop.shop_name %>
+              </h4>
+              <p class="caption">
+                <%= post.title %>
+              </p>
+              <p>
+                <% if post.image.attached? %>
+                  <%= image_tag post.image, size: "200x200" %>
+                <% else %>
+                  <%= image_tag "no_image.jpg", size: "200x200" %>
+                <% end %>
+              </p>
+              <p class="caption">
+                <% weeks = ["月","火","水","木","金","土","日"] %>
+                <% index = post.created_at_gteq.strftime("%u").to_i %>
+                <% index2 = post.created_at_lteq_end_of_day.strftime("%u").to_i %>
+                <%= post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %><br>
+                ~<%= post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %>
+              </p>
+              <% end %>
+            </div>
+        <% end %>
+        </div>
+  </div>
+</div>

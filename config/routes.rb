@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     patch '/unsubscribe' => 'users#withdraw'
   end
 
+  # get "search" => "searches#search"
 
   # scope module: :shop do
   #   get 'shops/edit/post' => 'shops#edit'

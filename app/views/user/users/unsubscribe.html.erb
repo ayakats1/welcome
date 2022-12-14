@@ -1,10 +1,16 @@
-<h2>本当に退会しますか？</h2>
-  <h4>退会すると、会員登録情報や<br>
+<div class="container">
+  <div class="row justify-content-center">
+    <h2>本当に退会しますか？</h2>
+  </div>
+  <div class="row justify-content-center">
+    <h4>
+      退会すると、会員登録情報や<br>
       これらの購入履歴が閲覧できなくなります。<br>
       退会する場合は、「退会する」をクリックして下さい。
-  </h4>
-
-    <%= link_to users_my_page_path, class: "btn btn-primary" do %>退会しない
-    <% end %>
-    <%= link_to unsubscribe_path, method: :patch, class: "btn btn-danger", "data-confirm" => "本当に退会しますか？" do %>退会する
-    <% end %>
+    </h4>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to "退会しない", users_my_page_path, class: "btn btn-primary" %>
+    <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger", method: :patch, data: {confirm: "本当に退会しますか？" } %>
+  </div>
+</div>

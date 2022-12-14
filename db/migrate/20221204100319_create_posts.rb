@@ -6,7 +6,8 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.date :created_at_lteq_end_of_day, null: false
       t.string :title, null: false
       t.string :body, null: false
-      t.string :address
+      t.string :postal_code, null: false
+      t.string :address, null: false
       t.float :latitude
       t.float :longitude
       t.timestamps

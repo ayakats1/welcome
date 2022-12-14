@@ -1,26 +1,32 @@
-<h2>レビュー投稿</h2>
+<div class="container">
+  <div class="row justify-content-center mt-3 mb-3">
+    <h2>レビュー投稿</h2>
+  </div>
 
-  <%= form_with model: @review, url: post_reviews_path(@post), method: :post do |f| %>
-    <table class="table table-borderless">
-      <tr>
-        <th id="star">
-          <%= f.label :star, '評価' %>
-          <script>
-            var elm = document.getElementById("star");
-            var opt = {
-              starOn: "<%= asset_path('star-on.png') %>",
-              starOff: "<%= asset_path('star-off.png') %>",
-              scoreName: "review[star]",
-            };
-            raty(elm, opt);
-          </script>
-        </th>
-      </tr>
-      <tr>
-        <th><%= f.text_area :review %></th>
-      </tr>
-      <tr>
-        <th><%= f.submit '投稿', class: "btn btn-success" %></th>
-      </tr>
-    </table>
-  <% end %>
+  <div class="row justify-content-center">
+      <%= form_with model: @review, url: post_reviews_path(@post), method: :post do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th id="star">
+              <%= f.label :star, '評価' %>
+              <script>
+                var elm = document.getElementById("star");
+                var opt = {
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  scoreName: "review[star]",
+                };
+                raty(elm, opt);
+              </script>
+            </th>
+          </tr>
+          <tr>
+            <th><%= f.text_area :review %></th>
+          </tr>
+          <tr>
+            <th><%= f.submit '投稿', class: "btn btn-success" %></th>
+          </tr>
+        </table>
+      <% end %>
+  </div>
+</div>

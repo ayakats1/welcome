@@ -13,9 +13,10 @@ class User::ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find(params[:post_id])
-    @review.destroy
-    redirect_to post_path
+    @post = Post.find(params[:post_id])
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to post_path(@post)
   end
 
   def review_params

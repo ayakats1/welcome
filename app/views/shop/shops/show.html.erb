@@ -1,56 +1,104 @@
-<h2>Shopマイページ</h2>
+<div class="container">
+  <div class="row justify-content-center mt-2 mb-2">
+    <h2><%= @shop.shop_name %>様</h2>
+  </div>
+  <div class="row">
+      <table class="table-borderless">
+        <tr>
+          <th>登録情報</th>
+          <td>
+            <%= link_to edit_shop_shop_path, class: "btn btn-success" do %>編集する
+            <% end %>
+          </td>
+        </tr>
+      </table>
 
-  <table class="table-borderless">
-    <tr>
-      <th>登録情報</th>
-      <td>
-        <%= link_to edit_shop_shop_path, class: "btn btn-success" do %>編集する
-        <% end %>
-      </td>
-    </tr>
-  </table>
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-active" width="30%">氏名</th>
+          <td width="70%">
+            <%= @shop.last_name %>
+            <%= @shop.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="table-active">カナ</th>
+          <td>
+            <%= @shop.last_name_kana %>
+            <%= @shop.first_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th class="table-active">Shop名</th>
+          <td>
+            <%= @shop.shop_name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="table-active">カナ</th>
+          <td>
+            <%= @shop.shop_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th class="table-active">郵便番号</th>
+          <td><%= @shop.postal_code %></td>
+        </tr>
+        <tr>
+          <th class="table-active">住所</th>
+          <td><%= @shop.address %></td>
+        </tr>
+        <tr>
+          <th class="table-active">電話番号</th>
+          <td><%= @shop.telephone_number %></td>
+        </tr>
+        <tr>
+          <th class="table-active">メールアドレス</th>
+          <td><%= @shop.email %></td>
+        </tr>
+      </table>
 
-  <table class="table table-bordered">
-    <tr>
-      <th class="table-active" width="30%">氏名</th>
-      <td width="70%">
-        <%= @shop.last_name %>
-        <%= @shop.first_name %>
-      </td>
-    </tr>
-    <tr>
-      <th class="table-active">カナ</th>
-      <td>
-        <%= @shop.last_name_kana %>
-        <%= @shop.first_name_kana %>
-      </td>
-    </tr>
-    <tr>
-      <th class="table-active">Shop名</th>
-      <td>
-        <%= @shop.shop_name %>
-      </td>
-    </tr>
-    <tr>
-      <th class="table-active">カナ</th>
-      <td>
-        <%= @shop.shop_name_kana %>
-      </td>
-    </tr>
-    <tr>
-      <th class="table-active">郵便番号</th>
-      <td><%= @shop.postal_code %></td>
-    </tr>
-    <tr>
-      <th class="table-active">住所</th>
-      <td><%= @shop.address %></td>
-    </tr>
-    <tr>
-      <th class="table-active">電話番号</th>
-      <td><%= @shop.telephone_number %></td>
-    </tr>
-    <tr>
-      <th class="table-active">メールアドレス</th>
-      <td><%= @shop.email %></td>
-    </tr>
-  </table>
+      <div id='map'></div>
+
+      <style>
+          #map {
+              height: 400px;
+              width: 400px;
+          }
+      </style>
+
+      <script>
+          // mapの表示関数
+          function initMap() {
+              geocoder = new google.maps.Geocoder()
+
+              // mapの初期位置, 縮尺を定義
+              map = new google.maps.Map(document.getElementById('map'), {
+                  center: {
+                      lat: <%= @shop.latitude %>,
+                      lng: <%= @shop.longitude %>
+                  },
+                  zoom: 12,
+              });
+
+              // mapsテーブルにあるそれぞれのレコードをmap上に表示
+              (function(){
+              var contentString = "住所：<%= @shop.address %>";
+
+              // マーカーを立てる
+              var marker = new google.maps.Marker({
+                  position:{lat: <%= @shop.latitude %>, lng: <%= @shop.longitude %>},
+                  map: map,
+                  title: contentString
+              });
+
+            })();
+          }
+      </script>
+
+      <script
+          src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"
+          async defer>
+      </script>
+  </div>
+</div>
