@@ -22,10 +22,10 @@
           <%= @post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %>
           ~<%= @post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %>
         </p>
-        <h3>
+        <h3 class="text-break">
           <%= @post.title %>
         </h3>
-        <p>
+        <p class="text-break">
           <%= @post.body %>
         </p>
       </div>
@@ -83,8 +83,7 @@
     </div>
 
     <div class="row mb-5">
-      <%= link_to edit_shop_post_path, class: "btn btn-success" do %>編集する
-      <% end %>
+      <%= link_to "編集する", edit_shop_post_path, class: "btn btn-success mr-2" %>
       <%= link_to "削除", shop_post_path(@post.id), class: "btn btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
     </div>
 

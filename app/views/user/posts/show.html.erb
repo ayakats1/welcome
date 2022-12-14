@@ -7,7 +7,7 @@
         <% if @post.image.attached? %>
           <%= image_tag @post.image, size: "300x300" %>
         <% else %>
-          <%= image_tag "no_image.jpg", size: "200x200" %>
+          <%= image_tag "no_image.jpg", size: "300x300" %>
         <% end %>
       </div>
 
@@ -22,10 +22,10 @@
           <%= @post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %>
           ~<%= @post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %>
         </p>
-        <h3>
+        <h3 class="text-break">
           <%= @post.title %>
         </h3>
-        <p>
+        <p class="text-break">
           <%= @post.body %>
         </p>
       </div>

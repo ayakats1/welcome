@@ -5,30 +5,30 @@
 
     <div class="row justify-content-center">
       <% @posts.each do |post| %>
-          <div class="col-3 shadow float text-center align-self-center ml-4 mb-4">
-            <%= link_to post_path(post.id) do %>
-            <h4 class="caption">
-              <%= post.shop.shop_name %>
-            </h4>
-            <p class="caption">
-              <%= post.title %>
-            </p>
-            <p>
-              <% if post.image.attached? %>
-                <%= image_tag post.image, size: "200x200" %>
-              <% else %>
-                <%= image_tag "no_image.jpg", size: "200x200" %>
+            <div class="col-3 shadow float text-center align-self-center ml-4 mb-4">
+              <%= link_to post_path(post.id), class: "col-4 text-info" do %>
+              <h4 class="caption">
+                <%= post.shop.shop_name %>
+              </h4>
+                <p class="caption text-break">
+                  <%= post.title %>
+                </p>
+              <p>
+                <% if post.image.attached? %>
+                  <%= image_tag post.image, size: "200x200" %>
+                <% else %>
+                  <%= image_tag "no_image.jpg", size: "200x200" %>
+                <% end %>
+              </p>
+                <% weeks = ["月","火","水","木","金","土","日"] %>
+                <% index = post.created_at_gteq.strftime("%u").to_i %>
+                <% index2 = post.created_at_lteq_end_of_day.strftime("%u").to_i %>
+              <p class="caption">
+                <%= post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %><br>
+                ~<%= post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %>
+              </p>
               <% end %>
-            </p>
-              <% weeks = ["月","火","水","木","金","土","日"] %>
-              <% index = post.created_at_gteq.strftime("%u").to_i %>
-              <% index2 = post.created_at_lteq_end_of_day.strftime("%u").to_i %>
-            <p class="caption">
-              <%= post.created_at_gteq.strftime("%Y年%-m月%-d日 (#{weeks[index - 1]})") %><br>
-              ~<%= post.created_at_lteq_end_of_day.strftime("%Y年%-m月%-d日 (#{weeks[index2 - 1]})") %>
-            </p>
-            <% end %>
-          </div>
+            </div>
       <% end %>
     </div>
 </div>
