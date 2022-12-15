@@ -4,6 +4,8 @@ class Post < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode
-  
+
   has_many :reviews
-end 
+
+  validates :title, length: { maximum: 40 }
+end

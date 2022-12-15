@@ -56,6 +56,18 @@
           <th class="table-active">メールアドレス</th>
           <td><%= @shop.email %></td>
         </tr>
+        <tr>
+          <th class="table-active">営業時間</th>
+          <td><%= @shop.opening_hours %></td>
+        </tr>
+        <tr>
+          <th class="table-active">定休日</th>
+          <td><%= @shop.regular_holiday %></td>
+        </tr>
+        <tr>
+          <th class="table-active">駐車場</th>
+          <td><%= @shop.parking %></td>
+        </tr>
       </table>
 
       <div id='map'></div>

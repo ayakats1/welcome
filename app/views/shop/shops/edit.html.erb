@@ -6,46 +6,94 @@
     <%= form_with model: @shop, url: shop_shop_path, method: :patch do |f| %>
       <table class="table table-borderless">
         <tr>
-          <th><%= f.label :氏名 %></th>
+          <th>
+            <%= f.label :氏名 %>
+          </th>
           <td>
             <%= f.text_field :last_name %>
             <%= f.text_field :first_name %>
           </td>
         </tr>
         <tr>
-          <th><%= f.label :フリガナ %></th>
+          <th>
+            <%= f.label :フリガナ %>
+          </th>
           <td>
             <%= f.text_field :last_name_kana %>
             <%= f.text_field :first_name_kana %>
           </td>
         </tr>
         <tr>
-          <th><%= f.label :店名 %></th>
+          <th>
+            <%= f.label :店名 %>
+          </th>
           <td>
             <%= f.text_field :shop_name %>
           </td>
         </tr>
         <tr>
-          <th><%= f.label :フリガナ %></th>
+          <th>
+            <%= f.label :フリガナ %>
+          </th>
           <td>
             <%= f.text_field :shop_name_kana %>
           </td>
         </tr>
         <tr>
-          <th><%= f.label :郵便番号 %></th>
-          <td><%= f.text_field :postal_code %></td>
+          <th>
+            <%= f.label :郵便番号 %>
+          </th>
+          <td>
+            <%= f.text_field :postal_code %>
+          </td>
         </tr>
         <tr>
-          <th><%= f.label :住所 %></th>
-          <td><%= f.text_field :address, :size => "60*60" %></td>
+          <th>
+            <%= f.label :住所 %>
+          </th>
+          <td>
+            <%= f.text_field :address, :size => "60*60" %>
+          </td>
         </tr>
         <tr>
-          <th><%= f.label :電話番号 %></th>
-          <td><%= f.text_field :telephone_number %></td>
+          <th>
+            <%= f.label :電話番号 %>
+          </th>
+          <td>
+            <%= f.text_field :telephone_number %>
+          </td>
         </tr>
         <tr>
-          <th><%= f.label :メールアドレス %></th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          <th>
+            <%= f.label :メールアドレス %>
+          </th>
+          <td>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :営業時間 %>
+          </th>
+          <td>
+            <%= f.text_field :opening_hours %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :定休日 %>
+          </th>
+          <td>
+            <%= f.text_field :regular_holiday %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :駐車場 %>
+          </th>
+          <td>
+            <%= f.text_field :parking %>
+          </td>
         </tr>
         <tr>
           <th></th>

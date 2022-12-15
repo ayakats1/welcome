@@ -11,6 +11,9 @@ class DeviseCreateShops < ActiveRecord::Migration[6.1]
       t.string :shop_name_kana, null: false
       t.string :postal_code, null: false
       t.string :address, null: false
+      t.string :opening_hours
+      t.string :regular_holiday
+      t.string :parking
       t.float :latitude
       t.float :longitude
       t.string :telephone_number, null: false

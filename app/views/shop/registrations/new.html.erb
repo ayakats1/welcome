@@ -32,14 +32,6 @@
           </tr>
           <tr>
             <th>
-              <%= f.label :メールアドレス %>
-            </th>
-            <td>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-            </td>
-          </tr>
-          <tr>
-            <th>
               <%= f.label :店名 %>
             </th>
             <td>
@@ -76,6 +68,38 @@
             </th>
             <td>
               <%= f.text_field :telephone_number %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :メールアドレス %>
+            </th>
+            <td>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :営業時間 %>
+            </th>
+            <td>
+              <%= f.text_field :opening_hours %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :定休日 %>
+            </th>
+            <td>
+              <%= f.text_field :regular_holiday %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :駐車場 %>
+            </th>
+            <td>
+              <%= f.text_field :parking %>
             </td>
           </tr>
           <tr>
