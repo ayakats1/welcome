@@ -5,7 +5,7 @@ class Shop::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @reviews = @post.reviews
+    @reviews = @post.reviews.order(created_at: :desc)
   end
 
   def new

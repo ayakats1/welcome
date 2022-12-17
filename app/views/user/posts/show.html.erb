@@ -72,7 +72,9 @@
           <tbody>
             <tr>
               <th>
-                <div id="star<%= review.id %>">
+                <%= review.user.last_name %>
+                <%= review.user.first_name %>
+                <div id="star<%= review.id %>"></div>
                   <script>
                     var elm = document.getElementById("star<%= review.id %>");
                     var opt = {
@@ -85,10 +87,7 @@
                     };
                     raty(elm, opt);
                   </script>
-                </div>
-                <p>
                   <%= review.review %>
-                </p>
                 <p class="text-right">
                   <% if current_user.id == review.user_id %>
                     <%= link_to "削除する", post_review_path(@post, review.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>

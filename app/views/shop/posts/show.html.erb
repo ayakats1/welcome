@@ -73,7 +73,9 @@
           <tbody>
             <tr>
               <th>
-                <div id="star<%= review.id %>">
+                <%= review.user.last_name %>
+                <%= review.user.first_name %>
+                <div id="star<%= review.id %>"></div>
                   <script>
                     var elm = document.getElementById("star<%= review.id %>");
                     var opt = {
@@ -86,7 +88,6 @@
                     };
                     raty(elm, opt);
                   </script>
-                </div><br>
                 <%= review.review %>
               </th>
             </tr>
