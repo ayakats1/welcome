@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
       <% @posts.each do |post| %>
             <div class="col-3 shadow float text-center align-self-center ml-4 mb-4" style="height: 406px">
-              <%= link_to post_path(post.id), class: "col-4 text-info" do %>
+              <%= link_to post_path(post.id), class: "col-4 text-dark" do %>
               <h4 class="caption">
                 <%= post.shop.shop_name %>
               </h4>

@@ -1,6 +1,7 @@
 class Shop::ShopsController < ApplicationController
   def show
     @shop = current_shop
+    @posts = Post.where(shop_id: current_shop.id).order(created_at: :desc)
   end
 
   def edit

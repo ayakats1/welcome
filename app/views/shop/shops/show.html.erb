@@ -3,12 +3,14 @@
     <h2><%= @shop.shop_name %>様</h2>
   </div>
   <div class="row mb-2">
-    <%= link_to "編集する", edit_shop_shop_path, class: "btn btn-success" %>
+    <div class="col-10">
+      <%= link_to "編集する", edit_shop_shop_path, class: "btn btn-success" %>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-10">
-      <table class="table">
+    <div class="col">
+      <table class="table table-bordered table-sm">
         <tr>
           <th width="20%">氏名</th>
           <td width="80%">
@@ -66,13 +68,38 @@
       </table>
     </div>
   </div>
-  
+
+  <div class="row">
+    <div class="col" >
+      <%= link_to "投稿する", new_shop_post_path, class: "btn btn-success mb-3" %>
+    </div>
+  </div>
   <div class="row">
     <div class="col">
-      <table>
-        
+      <table class="table table-borderd">
+        <thead class="table-active">
+          <tr>
+            <th width="20%">投稿日</th>
+            <th width="80%">タイトル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= post.created_at.to_s %>
+            </td>
+            <td>
+              <%= link_to shop_post_path(post.id), class: "text-info" do %>
+                <%= post.title %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
       </table>
     </div>
   </div>
-  
-</div>  
+
+</div>

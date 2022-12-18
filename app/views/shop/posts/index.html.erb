@@ -4,19 +4,19 @@
       <h2 class="font-weight-normal mt-3">投稿一覧</h2>
     </div>
 
-      <h1 class="text-right"><%= link_to new_shop_post_path do %><i class="fa-solid fa-circle-plus"></i><% end %></h1>
+      <%= link_to "投稿する", new_shop_post_path, class: "btn btn-success mb-3" %>
 
         <div class="row justify-content-center">
         <% @posts.each do |post| %>
             <div class="col-3 shadow float text-center align-self-center ml-4 mb-4" style="height: 406px">
-              <%= link_to shop_post_path(post.id), class: "col-4 text-info" do %>
+              <%= link_to shop_post_path(post.id), class: "col-4 text-dark" do %>
               <h4 class="caption">
                 <%= post.shop.shop_name %>
               </h4>
               <p class="caption text-break" style="">
                 <%= post.title %>
               </p>
-              <p>
+              <p lang="en">
                 <% if post.image.attached? %>
                   <%= image_tag post.image, size: "200x200" %>
                 <% else %>
