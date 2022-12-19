@@ -6,10 +6,10 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top', as: 'top'
-    resources :reviews, only:[:show, :destroy]
-    resources :posts, only:[:show, :destroy]
-    resources :users, only:[:show, :update, :destroy]
-    resources :shops, only:[:show, :update, :destroy]
+    resources :reviews, only:[:destroy]
+    resources :posts, only:[:index, :show, :destroy]
+    resources :users, only:[:index, :show, :edit, :update, :destroy]
+    resources :shops, only:[:show, :edit, :update, :destroy]
   end
 
   root to: 'homes#top'

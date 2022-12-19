@@ -1,2 +1,109 @@
-<h1>Admin::Shops#show</h1>
-<p>Find me in app/views/admin/shops/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center mt-3 mb-3">
+    <h2><%= @shop.shop_name %>様</h2>
+  </div>
+  <div class="row mb-2">
+    <div class="col-10">
+      <%= link_to "編集する", edit_admin_shop_path, class: "btn btn-success" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered table-sm">
+        <tr>
+          <th width="20%">氏名</th>
+          <td width="80%">
+            <%= @shop.last_name %>
+            <%= @shop.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td>
+            <%= @shop.last_name_kana %>
+            <%= @shop.first_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th>Shop名</th>
+          <td>
+            <%= @shop.shop_name %>
+          </td>
+        </tr>
+        <tr>
+          <th>カナ</th>
+          <td>
+            <%= @shop.shop_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @shop.postal_code %></td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td><%= @shop.address %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @shop.telephone_number %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @shop.email %></td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td><%= @shop.opening_hours %></td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td><%= @shop.regular_holiday %></td>
+        </tr>
+        <tr>
+          <th>駐車場</th>
+          <td><%= @shop.parking %></td>
+        </tr>
+        <tr>
+          <th>ステータス</th>
+            <% case @shop.is_deleted %>
+            <% when false then %>
+              <td class="text-success">有効</td>
+            <% else %>
+              <td class="text-danger">退会</td>
+            <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-borderd">
+        <thead class="table-active">
+          <tr>
+            <th width="20%">投稿日</th>
+            <th width="80%">タイトル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+        <tbody>
+          <tr>
+            <td>
+              <%= post.created_at.to_s %>
+            </td>
+            <td>
+              <%= link_to admin_post_path(post.id) do %>
+                <%= post.title %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+
+</div>

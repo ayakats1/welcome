@@ -1,7 +1,8 @@
 class Admin::ReviewsController < ApplicationController
-  def show
-  end
-
-  def edit
+  
+  def destroy
+    review = Review.find(params[:id])
+    review.destroy
+    redirect_to admin_post_path(@post)
   end
 end
