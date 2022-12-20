@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8 mt-3 mb-3">
+      <table class="table table-borderless">
+        <tr>
+          <td>
+            <%= @review.user.last_name %>
+            <%= @review.user.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div id="star<%= @review.id %>"></div>
+              <script>
+                var elm = document.getElementById("star<%= @review.id %>");
+                var opt = {
+                  size      : 36,
+                  starOn: "<%= asset_path('star-on.png') %>",
+                  starOff: "<%= asset_path('star-off.png') %>",
+                  score: <%= @review.star %>,
+                  half      : false,
+                  readOnly: true,
+                };
+                raty(elm, opt);
+              </script>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= @review.review %>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-right">
+            <%= link_to "削除する", admin_review_path(@review.id), class: "btn btn-sm btn-danger", method: :delete, "data-confirm" => "本当に消しますか？" %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

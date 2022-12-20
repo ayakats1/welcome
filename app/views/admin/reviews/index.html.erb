@@ -1,28 +1,28 @@
 <div class="container">
   <div class="row justify-content-center">
-    <h2>投稿一覧</h2>
+    <h2>レビュー一覧</h2>
   </div>
   <div class="row justify-content-center">
     <table class="table">
       <thead class="table-secondary">
         <tr>
           <th>ID</th>
+          <th>User名</th>
+          <th>レビュー</th>
           <th>Shop名</th>
-          <th>タイトル</th>
-          <th>レビュー数</th>
         </tr>
       </thead>
-      <% @posts.each do |post| %>
+      <% @reviews.each do |review| %>
       <tbody>
         <tr>
-          <td><%= post.id %></td>
-          <td><%= post.shop.shop_name %></td>
+          <td><%= review.id %></td>
+          <td><%= review.user.last_name %><%= review.user.first_name %></td>
           <td>
-            <%= link_to admin_post_path(post.id) do %>
-              <%= post.title %>
+            <%= link_to admin_review_path(review.id) do %>
+              <%= review.review %>
             <% end %>
-            </td>
-          <td><%= post.reviews.count %></td>
+              </td>
+          <td><%= review.post.shop.shop_name %></td>
         </tr>
       </tbody>
       <% end %>
