@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'user/sessions#guest_sign_in'
+  end
+
+  devise_scope :shop do
+    post 'shops/guest_sign_in', to: 'shop/sessions#guest_sign_in'
+  end
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
@@ -39,6 +47,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:new, :create, :destroy] # コメントをしたり、レビューをしたりする関連
     end
 
+    get "search" => "searches#search"
     # マイページ (お気に入り投稿が見ることができて自分の情報を編集することもできる)
     get 'users/edit/post' => 'users#edit'
     patch 'users/my_page' => 'users#update'

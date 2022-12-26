@@ -83,8 +83,8 @@
       <table class="table table-borderd">
         <thead class="table-active">
           <tr>
-            <th width="20%">投稿日</th>
-            <th width="80%">タイトル</th>
+            <th width="30%">投稿日</th>
+            <th width="70%">タイトル</th>
             <th></th>
           </tr>
         </thead>
@@ -92,7 +92,7 @@
         <tbody>
           <tr>
             <td>
-              <%= post.created_at.to_s %>
+              <%= post.created_at.to_s(:datetime_jp) %>
             </td>
             <td>
               <%= link_to admin_post_path(post.id) do %>

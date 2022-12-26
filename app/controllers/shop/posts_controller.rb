@@ -1,5 +1,6 @@
 class Shop::PostsController < ApplicationController
   def index
+    #@posts = Post.where("created_at_lteq_end_of_day >= ?", Date.today).order(created_at: :desc)
     @posts = Post.all.order(created_at: :desc)
   end
 

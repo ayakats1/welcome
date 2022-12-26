@@ -2,6 +2,10 @@
   <div class="row justify-content-center mt-3 mb-3">
     <h2>投稿詳細</h2>
   </div>
+    <div class="row mb-3">
+      <%= @post.created_at.to_s(:datetime_jp) %>
+
+    </div>
     <div class="row mb-5">
       <div class="col">
         <% if @post.image.attached? %>

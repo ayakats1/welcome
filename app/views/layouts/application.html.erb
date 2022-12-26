@@ -68,17 +68,24 @@
                   <li>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary ml-3" %>
                   </li>
-                  <!--<li>-->
-                  <!--  <div class="search_form ml-3">-->
-                  <!--    <%#= form_with url: search_path, local: true, method: :get do |f| %>-->
-                  <!--      <%#= f.text_field :word %>-->
-                  <!--      <%#= f.submit "検索", class: "btn btn-primary" %>-->
-                  <!--    <%# end %>-->
-                  <!--  </div>-->
-                  <!--</li>-->
+                  <li>
+                    <div class="search_form ml-3">
+                      <%= form_with url: search_path, local: true, method: :get do |f| %>
+                        <%= f.text_field :word %>
+                        <%= f.select :range, options_for_select([['レストラン'], ['Bar'], ['居酒屋'], ['カフェ'], ['喫茶']]) %>
+                        <%= f.submit "検索", class: "btn btn-info" %>
+                      <% end %>
+                    </div>
+                  </li>
                 </ul>
               <% else %>
                 <ul class="navbar-nav ml-auto">
+                  <li>
+                    <%= link_to 'ゲストログイン（shop閲覧用）', shops_guest_sign_in_path, method: :post, class: "btn btn-secondary mr-3" %>
+                  </li>
+                  <li>
+                    <%= link_to 'ゲストログイン（User閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-secondary mr-3" %>
+                  </li>
                   <li>
                     <%= link_to "About", about_path, class: "btn btn-secondary" %>
                   </li>

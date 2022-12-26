@@ -2,6 +2,12 @@
 
 class Shop::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  def guest_sign_in
+    shop = Shop.guest
+    sign_in shop
+    redirect_to root_path
+  end
+
   before_action :shop_state, only: [:create]
 
   def after_sign_in_path_for(resource)

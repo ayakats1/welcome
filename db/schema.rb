@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2022_12_17_104341) do
     t.string "first_name_kana", null: false
     t.string "shop_name", null: false
     t.string "shop_name_kana", null: false
+    t.string "genre", null: false
     t.string "postal_code", null: false
     t.string "address", null: false
     t.string "opening_hours"

@@ -1,0 +1,10 @@
+<%# if @range == "レストラン" %>
+
+      <% @posts.each do |post| %>
+
+          <%= post.title %>-
+          <%= post.shop.shop_name %>-
+          <%= post.shop.genre %><br>
+
+      <% end %>
+<%# end %>

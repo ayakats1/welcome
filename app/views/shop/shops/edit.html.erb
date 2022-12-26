@@ -41,6 +41,14 @@
         </tr>
         <tr>
           <th>
+            <%= f.label :ジャンル %>
+          </th>
+          <td>
+            <%= f.select :genre, ['レストラン', 'Bar', '居酒屋', 'カフェ', '喫茶'], {include_blank: '選択ボックス'} %>
+          </td>
+        </tr>
+        <tr>
+          <th>
             <%= f.label :郵便番号 %>
           </th>
           <td>
