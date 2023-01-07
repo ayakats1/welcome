@@ -13,6 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+
 import Raty from "./raty.js"
 window.raty = function(elm, opt) {
   var raty = new Raty(elm, opt)
