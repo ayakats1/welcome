@@ -57,25 +57,5 @@ Rails.application.routes.draw do
     get '/unsubscribe' => 'users#unsubscribe'
     patch '/unsubscribe' => 'users#withdraw'
   end
-
-  # get "search" => "searches#search"
-
-  # scope module: :shop do
-  #   get 'shops/edit/post' => 'shops#edit'
-  #   patch 'shops/my_page' => 'shops#update'
-  #   get 'shops/my_page' => 'shops#show'
-  #   get 'shops/unsubscribe' => 'shops#unsubscribe'
-  #   patch 'shops/unsubscribe' => 'shops#withdraw'
-  #   resources :posts
-  # end
-  # scope module: :user do
-  #   get 'users/edit/post' => 'users#edit'
-  #   patch 'users/my_page' => 'users#update'
-  #   get 'users/my_page' => 'users#show'
-  #   get 'users/unsubscribe' => 'users#unsubscribe'
-  #   patch 'users/unsubscribe' => 'users#withdraw'
-  #   resources :comments
-  # # end
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
