@@ -18,9 +18,9 @@
               </p>
               <p lang="en">
                 <% if post.image.attached? %>
-                  <%= image_tag post.image, size: "200x200" %>
+                  <%= image_tag post.image, class: "index-img" %>
                 <% else %>
-                  <%= image_tag "no_image.jpg", size: "200x200" %>
+                  <%= image_tag "no_image.jpg", class: "index-img" %>
                 <% end %>
               </p>
                 <% weeks = ["月","火","水","木","金","土","日"] %>

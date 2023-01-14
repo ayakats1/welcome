@@ -1,41 +1,46 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5 mb-5">
     <h2>店舗様ログイン</h2>
   </div>
-
-    <div class="row justify-content-center">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <table class="table table-borderless">
-          <tr>
-            <th>
-              <%= f.label :メールアドレス %>
-            </th>
-            <td>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "40*40" %>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              <%= f.label :パスワード %>
-            </th>
-            <td>
-              <%= f.password_field :password, autocomplete: "current-password", :size => "40*40" %>
-            </td>
-          </tr>
-          <tr>
-            <th></th>
-            <td>
-              <%= f.submit "ログイン", class: "btn btn-primary" %>
-            </td>
-          </tr>
-        </table>
-        <% end %>
-
-        <div class="row justify-content-center">
-          <h4>会員登録がお済みでない方は</h4>
-          <h4>
-            <%= link_to "こちら", new_shop_registration_path %>から新規登録を行ってください。
-          </h4>
-        </div>
+  <div class="row justify-content-center">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th>
+            <%= f.label :メールアドレス %>
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "40*40", class: 'form-control' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= f.label :パスワード %>
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.password_field :password, autocomplete: "current-password", :size => "40*40", class: 'form-control' %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col">
+      <h4 class="text-center">
+        会員登録がお済みでない方は
+        <%= link_to "こちら", new_shop_registration_path %>から<br>
+        新規登録を行ってください。
+      </h4>
+    </div>
   </div>
 </div>

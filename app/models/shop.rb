@@ -9,6 +9,15 @@ class Shop < ApplicationRecord
 
   has_many :posts
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :shop_name, presence: true
+  validates :shop_name_kana, presence: true
+  validates :postal_code, presence: true
+  validates :address, presence: true
+  validates :telephone_number, presence: true
 
   def self.guest
     find_or_create_by!(email: 'guest@test.com') do |shop|

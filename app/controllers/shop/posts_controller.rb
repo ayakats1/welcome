@@ -7,6 +7,7 @@ class Shop::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @reviews = @post.reviews.order(created_at: :desc)
+    Time::DATE_FORMATS[:datetime_jp] = '%Y/ %m/ %d'
   end
 
   def new
@@ -15,14 +16,14 @@ class Shop::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.shop_id = current_shop.id
-    if params[:post][:address_select] == "0"
-      @post.postal_code = current_shop.postal_code
-      @post.address = current_shop.address
+    @shop = current_shop
+    @post = @shop.posts.build(post_params)
+    if @post.save
+      redirect_to shop_posts_path, notice: "投稿に成功しました"
+    else
+      flash.now[:danger] = "投稿に失敗しました"
+      render :new
     end
-    @post.save
-    redirect_to shop_posts_path
   end
 
   def edit
@@ -44,6 +45,6 @@ class Shop::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:shop_id, :title, :body, :image, :created_at_gteq, :created_at_lteq_end_of_day, :postal_code, :address, :latitude, :longitude)
+    params.require(:post).permit(:shop_id, :title, :body, :image, :created_at_gteq, :created_at_lteq_end_of_day, :postal_code, :address, :latitude, :longitude, :address_select)
   end
 end

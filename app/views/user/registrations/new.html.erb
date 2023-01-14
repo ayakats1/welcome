@@ -1,74 +1,87 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5 mb-4">
     <h2>お客様新規会員登録</h2>
   </div>
-  <div class="row justify-content-center">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "user/shared/error_messages", resource: resource %>
 
-      <table class="table table-borderless">
-        <tr>
-          <th width="30%">
-            <%= f.label :名前 %>
-          </th>
-          <td width="35%">
-            (姓)<%= f.text_field :first_name %>
-          </td>
-          <td width="35%">
-            (名)<%= f.text_field :last_name %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :フリガナ %><br>
-          </th>
-          <td>
-            (セイ)<%= f.text_field :first_name_kana %>
-          </td>
-          <td>
-            (メイ)<%= f.text_field :last_name_kana %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :メールアドレス %>
-          </th>
-          <td>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :パスワード %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> 文字以上)</em>
-            <% end %><br />
-          </th>
-          <td>
-            <%= f.password_field :password, autocomplete: "new-password" %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :パスワード %>(確認用)
-          </th>
-          <td>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-          </td>
-        </tr>
-        <tr>
-          <th colspan="1"></th>
-          <th>
-            <%= f.submit "新規登録", class: "btn btn-success" %>
-          </th>
-        </tr>
-      </table>
-      <% end %>
-  </div>
   <div class="row justify-content-center">
-    <h4>既に登録済みの方</h4>
-    <h4>
-      <%= link_to "こちら", new_user_session_path %>からログインしてください。
+    <div class="col-lg-8">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "user/shared/error_messages", resource: resource %>
+        <table class="table table-borderless">
+          <tr>
+            <th width="30%">
+              <%= f.label :氏名 %>
+            </th>
+            <td width="35%">
+              <div class="form-group">
+                (姓)<%= f.text_field :first_name, class: 'form-control' %>
+              </div>
+            </td>
+            <td width="35%">
+                (名)<%= f.text_field :last_name, class: 'form-control' %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :フリガナ %><br>
+            </th>
+            <td>
+              <div class="form-group">
+                (セイ)<%= f.text_field :first_name_kana, class: 'form-control' %>
+              </div>
+            </td>
+            <td>
+              (メイ)<%= f.text_field :last_name_kana, class: 'form-control' %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :メールアドレス %>
+            </th>
+            <td colspan="2">
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "60*60", class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+              <% end %><br />
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :パスワード %>(確認用)
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th colspan="1"></th>
+            <th>
+              <%= f.submit "新規登録", class: "btn btn-success" %>
+            </th>
+          </tr>
+        </table>
+        <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-5 mb-5">
+    <h4 class="text-center">
+      既に登録済みの方は
+      <%= link_to "こちら", new_user_session_path %>から<br>
+      ログインしてください。
     </h4>
   </div>
 </div>

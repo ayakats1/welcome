@@ -1,36 +1,61 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5 mb-5">
     <h2>会員情報編集</h2>
   </div>
-  <div class="row justify-content-center">
-    <%= form_with model: @user, url: users_my_page_path, method: :patch do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <th><%= f.label :氏名 %></th>
-          <td>
-            <%= f.text_field :last_name %>
-            <%= f.text_field :first_name %>
-          </td>
-        </tr>
-        <tr>
-          <th><%= f.label :フリガナ %></th>
-          <td>
-            <%= f.text_field :last_name_kana %>
-            <%= f.text_field :first_name_kana %>
-          </td>
-        </tr>
-        <tr>
-          <th><%= f.label :メールアドレス %></th>
-          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-        </tr>
-        <tr>
-          <th></th>
-          <td>
-            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-            <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
-          </td>
-        </tr>
-      </table>
-    <% end %>
- </div>
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-lg-8">
+      <%= form_with model: @user, url: users_my_page_path, method: :patch do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th width="24%">
+              <%= f.label :氏名 %>
+            </th>
+            <td width="38%">
+              <div class="form-group">
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
+            </td>
+            <td width="38%">
+              <div class="form-group">
+                <%= f.text_field :first_name, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :フリガナ %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :last_name_kana, class: 'form-control' %>
+              </div>
+            </td>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :first_name_kana, class: 'form-control'%>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :メールアドレス %>
+            </th>
+            <td colspan="2">
+              <div class="form-group">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "60*60", class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+              <%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
 </div>

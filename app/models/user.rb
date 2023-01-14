@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :reviews
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+
   def self.guest
     find_or_create_by!(email: 'guest@test.com') do |user|
       user.last_name = "guest"

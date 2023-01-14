@@ -4,29 +4,35 @@
   </div>
 
   <div class="row justify-content-center">
-      <%= form_with model: @review, url: post_reviews_path(@post), method: :post do |f| %>
-        <table class="table table-borderless">
-          <tr>
-            <th id="star">
-              <%= f.label :star, '評価' %>
-              <script>
-                var elm = document.getElementById("star");
-                var opt = {
-                  starOn: "<%= asset_path('star-on.png') %>",
-                  starOff: "<%= asset_path('star-off.png') %>",
-                  scoreName: "review[star]",
-                };
-                raty(elm, opt);
-              </script>
-            </th>
-          </tr>
-          <tr>
-            <th><%= f.text_area :review %></th>
-          </tr>
-          <tr>
-            <th><%= f.submit '投稿', class: "btn btn-success" %></th>
-          </tr>
-        </table>
-      <% end %>
+    <%= form_with model: @review, url: post_reviews_path(@post), method: :post do |f| %>
+      <%= render 'layouts/error_messages', object: f.object %>
+      <%= f.hidden_field :post_id %>
+      <table class="table table-borderless">
+        <tr>
+          <th id="star">
+            <%= f.label :star, '評価' %>
+            <script>
+              var elm = document.getElementById("star");
+              var opt = {
+                starOn: "<%= asset_path('star-on.png') %>",
+                starOff: "<%= asset_path('star-off.png') %>",
+                scoreName: "review[star]",
+              };
+              raty(elm, opt);
+            </script>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <div class="form-group">
+              <%= f.text_area :review, rows: 5, class: 'form-control' %>
+            </div>
+          </th>
+        </tr>
+        <tr>
+          <th><%= f.submit '投稿', class: "btn btn-success" %></th>
+        </tr>
+      </table>
+    <% end %>
   </div>
 </div>

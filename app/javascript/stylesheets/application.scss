@@ -1,2 +1,46 @@
 @import '~bootstrap/scss/bootstrap';
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+.background-top {
+  background-image: url('../images/toast.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+}
+
+.main-visual-text {
+	vertical-align: middle;
+  text-align: center;
+  color: white;
+  font-family :
+    YuMincho,    /* Mac用 */
+  	'Yu Mincho', /* Windows用 */
+  	serif;
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 210px;
+}
+
+.field_with_errors {
+  display: inline;
+  input, textarea {
+    border-color: red;
+  }
+}
+
+.index-img{
+		width: 200px;
+		height: 200px;
+		object-fit: cover;
+	}
+
+	.show-img{
+		width: 400px;
+		height: 400px;
+		object-fit: cover;
+	}
+
+	.about-img{
+		width: 500px;
+		height: 400px;
+		object-fit: cover;
+	}

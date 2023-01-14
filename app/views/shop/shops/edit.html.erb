@@ -1,116 +1,146 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5 mb-4">
     <h2>店舗会員情報編集</h2>
   </div>
   <div class="row justify-content-center">
-    <%= form_with model: @shop, url: shop_shop_path, method: :patch do |f| %>
-      <table class="table table-borderless">
-        <tr>
-          <th>
-            <%= f.label :氏名 %>
-          </th>
-          <td>
-            <%= f.text_field :last_name %>
-            <%= f.text_field :first_name %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :フリガナ %>
-          </th>
-          <td>
-            <%= f.text_field :last_name_kana %>
-            <%= f.text_field :first_name_kana %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :店名 %>
-          </th>
-          <td>
-            <%= f.text_field :shop_name %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :フリガナ %>
-          </th>
-          <td>
-            <%= f.text_field :shop_name_kana %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :ジャンル %>
-          </th>
-          <td>
-            <%= f.select :genre, ['レストラン', 'Bar', '居酒屋', 'カフェ', '喫茶'], {include_blank: '選択ボックス'} %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :郵便番号 %>
-          </th>
-          <td>
-            <%= f.text_field :postal_code %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :住所 %>
-          </th>
-          <td>
-            <%= f.text_field :address, :size => "60*60" %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :電話番号 %>
-          </th>
-          <td>
-            <%= f.text_field :telephone_number %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :メールアドレス %>
-          </th>
-          <td>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :営業時間 %>
-          </th>
-          <td>
-            <%= f.text_field :opening_hours %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :定休日 %>
-          </th>
-          <td>
-            <%= f.text_field :regular_holiday %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            <%= f.label :駐車場 %>
-          </th>
-          <td>
-            <%= f.text_field :parking %>
-          </td>
-        </tr>
-        <tr>
-          <th></th>
-          <td>
-            <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-            <%= link_to "退会する", unsubscribe_shop_shop_path, class: "btn btn-danger" %>
-          </td>
-        </tr>
-      </table>
-    <% end %>
+    <div class="col-lg-8">
+      <%= form_with model: @shop, url: shop_shop_path, method: :patch do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th width="24%">
+              <%= f.label :氏名 %>
+            </th>
+            <td width="38%">
+              <div class="form-group">
+                <%= f.text_field :last_name, class: 'form-control' %>
+              </div>
+            </td>
+            <td width="38%">
+                <%= f.text_field :first_name, class: 'form-control' %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :フリガナ %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :last_name_kana, class: 'form-control' %>
+              </div>
+            </td>
+            <td>
+                <%= f.text_field :first_name_kana, class: 'form-control' %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :店名 %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :shop_name, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :フリガナ %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :shop_name_kana, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :ジャンル %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.select :genre, ['レストラン', 'Bar', '居酒屋', 'カフェ', '喫茶'], {include_blank: '選択ボックス'}, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :郵便番号 %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :postal_code, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :住所 %>
+            </th>
+            <td colspan="2">
+              <div class="form-group">
+                <%= f.text_field :address, :size => "60*60", class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :電話番号 %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :telephone_number, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :メールアドレス %>
+            </th>
+            <td colspan="2">
+              <div class="form-group">
+                <%= f.email_field :email, :size => "60*60", autofocus: true, autocomplete: "email", class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :営業時間 %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :opening_hours, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :定休日 %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :regular_holiday, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <%= f.label :駐車場 %>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :parking, class: 'form-control' %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+              <%= link_to "退会する", unsubscribe_shop_shop_path, class: "btn btn-danger" %>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
   </div>
 </div>

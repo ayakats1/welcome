@@ -1,15 +1,18 @@
 class User::ReviewsController < ApplicationController
   def new
     @post = Post.find(params[:post_id])
-    @review = Review.new
+    @review = current_user.reviews.build(post_id: @post.id)
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.post_id = params[:post_id]
-    @review.user_id = current_user.id
-    @review.save
-    redirect_to post_path(params[:post_id])
+    @review = current_user.reviews.build(review_params)
+    @post = @review.post
+    if @review.save
+      redirect_to post_path(params[:post_id]), notice: "投稿に成功しました"
+    else
+      flash.now[:danger] = "投稿に失敗しました"
+      render :new
+    end
   end
 
   def destroy
@@ -20,6 +23,6 @@ class User::ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:post_id, :user_id, :star, :review)
+    params.require(:review).permit(:post_id, :star, :review)
   end
 end

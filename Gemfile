@@ -59,6 +59,7 @@ gem "net-smtp"
 gem 'devise'
 gem 'geocoder'
 gem 'dotenv-rails'
+gem 'kaminari'
 
 gem 'dotenv-rails'
 group :production do

@@ -14,6 +14,8 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
+import './custom.js'
+
 import Raty from "./raty.js"
 window.raty = function(elm, opt) {
   var raty = new Raty(elm, opt)
@@ -24,3 +26,5 @@ window.raty = function(elm, opt) {
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+
