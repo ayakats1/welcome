@@ -1,9 +1,10 @@
 <div class="container">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-3 mb-3">
     <h2>投稿編集</h2>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mb-2">
     <%= form_with model: @post, url: shop_post_path(@post.id), method: :patch do |f| %>
+      <%= render 'layouts/error_messages', object: f.object %>
       <table class="table table-borderless">
         <tr>
           <th>画像</th>
@@ -12,24 +13,38 @@
         <tr>
           <th>期間</th>
           <td>
-            <%= f.date_field :created_at_gteq %>
-            <span>~</span>
-            <%= f.date_field :created_at_lteq_end_of_day %>
+            <div class="form-group">
+              <%= f.date_field :created_at_gteq, class: "form-control d-inline", style: "width:46%;" %>
+              <span class="d-inline">~</span>
+              <%= f.date_field :created_at_lteq_end_of_day, class: "form-control d-inline", style: "width:47%;" %>
+            </div>
           </td>
         </tr>
         <tr>
           <th>タイトル</th>
-          <td><%= f.text_field :title %></td>
+          <td>
+            <div class="form-group">
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+          </td>
         </tr>
         <tr>
           <th>内容</th>
-          <td><%= f.text_area :body %></td>
+          <td>
+            <div class="form-group">
+              <%= f.text_area :body, class: 'form-control' %>
+            </div>
+          </td>
         </tr>
         <tr>
           <th>住所</th>
           <td>
-            <%= f.text_field :postal_code %><br>
-            <%= f.text_field :address %>
+            <div class="form-group">
+              <%= f.text_field :postal_code, class: 'form-control' %><br>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :address, class: 'form-control' %>
+            </div>
           </td>
         </tr>
         <tr>

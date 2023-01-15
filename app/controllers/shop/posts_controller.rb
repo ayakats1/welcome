@@ -28,6 +28,10 @@ class Shop::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if current_shop.id != @post.shop_id
+      flash[:error] = "投稿者しか編集出来ません"
+      redirect_to shop_post_path(@post)
+    end
   end
 
   def update

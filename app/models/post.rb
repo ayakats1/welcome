@@ -13,7 +13,6 @@ class Post < ApplicationRecord
   validates :created_at_lteq_end_of_day, presence: true
   validates :title, presence: true, length: { maximum: 40 }
   validates :body, presence: true
-  validates :address_select, presence: true
   validates :postal_code, presence: true
   validates :address, presence: true
 
