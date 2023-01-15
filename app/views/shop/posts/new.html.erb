@@ -3,78 +3,7 @@
     <h2>新規投稿</h2>
   </div>
   <div class="row justify-content-center md-2">
-
-    <%= form_with model: @post, url: shop_posts_path, method: :post do |f| %>
-      <%= render 'layouts/error_messages', object: f.object %>
-      <table class="table table-borderless">
-        <tr>
-          <th>画像</th>
-          <td><%= f.file_field :image, accept: "image/*" %></td>
-        </tr>
-        <tr>
-          <th>期間</th>
-          <td>
-            <div class="form-group">
-              <%= f.date_field :created_at_gteq, class: "form-control d-inline", style: "width:46%;" %>
-              <span class="d-inline">~</span>
-              <%= f.date_field :created_at_lteq_end_of_day, class: "form-control d-inline", style: "width:47%;" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>タイトル</th>
-          <td>
-            <div class="form-group">
-              <%= f.text_field :title, class: 'form-control' %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>内容</th>
-          <td>
-            <div class="form-group">
-              <%= f.text_area :body, rows: 5, class: 'form-control' %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td>
-            <%= f.radio_button :address_select, 0, checked: true, class: "address__redio-button" %>
-            登録住所の指定の場合
-            <div class="card">
-              <div class="card-body">
-                <div class="form-group">
-                   〒:<br><%= @shop.postal_code %>
-                </div>
-
-                <div class="form-group">
-                  住所:<br><%= @shop.address %>
-               </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th></th>
-          <td>
-            <%= f.radio_button :address_select, 1, class: "address__redio-button" %>
-            新たに住所を指定する場合
-            <div class="form-group">
-               〒:<%= f.text_field :postal_code, class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              住所:<%= f.text_field :address, class: "form-control" %>
-           </div>
-          </td>
-        </tr>
-        <tr>
-          <th></th>
-          <td><%= f.submit '新規投稿', class: "btn btn-success" %></td>
-        </tr>
-      </table>
-    <% end %>
+    <%= render 'shop/posts/form', post: @post, shop: @shop, url: shop_posts_path, submit: "新規作成" %>
   </div>
 </div>
 

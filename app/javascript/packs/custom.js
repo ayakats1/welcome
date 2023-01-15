@@ -1,7 +1,7 @@
 /*global $*/
 
 // ルートパスを取得して、一致するかどうか
-if (location.pathname == '/shop/posts/new') {
+
   document.addEventListener('turbolinks:load', () => {
     // 初期表時の動作
     // IDがpost_address_select_1のものを取得して、attr属性を確認 ここ正常に動いていないです。
@@ -32,4 +32,4 @@ if (location.pathname == '/shop/posts/new') {
       }
     })
   })
-}
+

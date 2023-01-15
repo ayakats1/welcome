@@ -28,7 +28,8 @@ class Shop::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    if current_shop.id != @post.shop_id
+    @shop = @post.shop
+    if current_shop != @shop
       flash[:error] = "投稿者しか編集出来ません"
       redirect_to shop_post_path(@post)
     end
@@ -36,8 +37,13 @@ class Shop::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to shop_post_path(@post.id)
+    @shop = @post.shop
+    if @post.update(post_params)
+      redirect_to shop_post_path(@post), notice: "投稿に成功しました"
+    else
+      flash.now[:danger] = "投稿に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
